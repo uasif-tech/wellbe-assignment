@@ -1,0 +1,8 @@
+---
+en:
+  task_assignments:
+    index:
+      messages:
+        success_create: Task assignment was successfully created.
+        success_update: Task assignment was successfully updated.
+        success_destroy: Task assignment was successfully destroyed.

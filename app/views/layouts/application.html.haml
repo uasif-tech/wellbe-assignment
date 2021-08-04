@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Wellbe
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag asset_path('fav.png')
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-expand-lg
+      #custom-container.container
+        %a.navbar-brand
+          %img(src="#{asset_path('logo.png')}")
+        %ul.navbar-nav
+          %li.nav-item
+            %a.nav-link#pill{href: tasks_path } Tasks
+          %li.nav-item
+            %a.nav-link#pill{href: patients_path} Patients
+
+    = yield

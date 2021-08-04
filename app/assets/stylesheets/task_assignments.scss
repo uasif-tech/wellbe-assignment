@@ -1,0 +1,43 @@
+// Place all the styles related to the TaskAssignments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+#add-todo {
+  margin: 100px auto 0 auto;
+  width: 500px;
+}
+
+#todo .img-content-wrapper {
+  margin: 0 auto 0 auto;
+
+}
+
+
+#add-todo .form-control {
+  font-size: 12px;
+}
+
+.pending {
+  color: grey;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5px;
+
+  &:hover {
+    color: green;
+  }
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.remote-link {
+  &:hover {
+    color: transparent;
+    background-color: transparent;
+  }
+}

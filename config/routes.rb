@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  # root to: "home#index"
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'tasks#index'
+  resources :tasks, except: :show do
+    resources :task_items
+  end
+  resources :patients do
+    resources :task_assignments
+  end
 end

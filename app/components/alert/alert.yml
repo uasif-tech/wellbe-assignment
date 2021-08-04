@@ -1,0 +1,12 @@
+:meta:
+  "This component implements four types of alert boxes (info, warning, error, success). You may either directly
+  create an alert by using render_component or use rails flash messaging system. For directly creating an
+  alert, see the examples below.  For the rails flash alerts, we use four custom flash types within our system,
+  :success, :warning, :error, and :info "
+:stubs:
+  -
+    :mv_stub_meta:
+      :title: 'Success'
+    :type: 'success'
+    :title: 'Success Status'
+    :body: 'Lorem ipsum dolor sit amet, <a href="javascript:void(0);">consectetur adipiscing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'

@@ -1,0 +1,5 @@
+%h1 Editing Task Assignment
+= render 'form', task_assignment: @task_assignment
+= link_to 'Show', patient_task_assignment_path(@patient,@task_assignment)
+|
+= link_to 'Back', patient_task_assignments_path

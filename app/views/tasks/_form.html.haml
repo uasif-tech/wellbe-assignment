@@ -1,0 +1,21 @@
+#todo.py-5
+  .container
+    .img-content-wrapper
+      %img.img-fluid.rounded{:alt => "", :src => "#{asset_path('img-holder.png')}"}/
+      %h4.dashboard-title
+        %a{:href => "#"} Add Todos
+    #add-todo
+      = form_with(model: task) do |form|
+        - if task.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(task.errors.count, "error")
+              prohibited this task from being saved:
+            %ul
+              - task.errors.each do |error|
+                %li= error.full_message
+        .form-group
+          = form.text_field :task_name, class:'form-control', placeholder: 'Enter Task Name'
+        #action-buttons.text-center.mt-4
+          = link_to 'CANCEL', tasks_path, class: 'btn  btn-edit btn-general'
+          = form.submit class: 'btn  btn-edit btn-general'

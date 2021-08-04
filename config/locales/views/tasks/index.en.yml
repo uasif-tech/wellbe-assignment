@@ -1,0 +1,9 @@
+---
+en:
+  tasks:
+    index:
+      messages:
+        success_create: Task was successfully created.
+        success_update: Task was successfully updated.
+        success_destroy: Task was successfully destroyed.
+

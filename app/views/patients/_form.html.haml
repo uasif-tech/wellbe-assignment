@@ -1,0 +1,23 @@
+#todo.py-5
+  .container
+    .img-content-wrapper
+      %img.img-fluid.rounded{:alt => "", :src => "#{asset_path('img-holder.png')}"}/
+      %h4.dashboard-title
+        %a{:href => "#"} Add Patient
+    #add-todo
+      = form_with(model: patient) do |form|
+        - if patient.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(patient.errors.count, "error")
+              prohibited this patient from being saved:
+            %ul
+              - patient.errors.each do |error|
+                %li= error.full_message
+        .form-group
+          = form.text_field :first_name, class:'form-control', placeholder: 'Enter First Name'
+        .form-group.mt-2
+          = form.text_field :last_name, class:'form-control', placeholder: 'Last  Name'
+        #action-buttons.text-center.mt-4
+          = link_to 'CANCEL', patients_path, class: 'btn  btn-edit btn-general'
+          = form.submit class: 'btn  btn-edit btn-general'

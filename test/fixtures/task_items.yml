@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString with long title
+  body: MyString
+  due_days: 2
+
+two:
+  title: MyString
+  body: MyString
+  due_days: MyString
+
+invalid:
+  title: MyString
+

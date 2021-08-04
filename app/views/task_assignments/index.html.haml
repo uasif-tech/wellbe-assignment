@@ -1,0 +1,28 @@
+%p#notice= notice
+- if @patient.task_assignments.collect(&:is_completed).all?
+  .alert.alert-success
+    All Task Items Completed
+.card
+  .card-header
+    %h1.card-title= "#{@patient.first_name} #{@patient.last_name}"
+    %p= @task_assignments.first&.task&.task_name
+  .card-body.m-5
+    - @task_assignments.each do |task_assignment|
+      .accordion.accordion-flush{:id => "accordionFlushExample-#{task_assignment.id}"}
+        .accordion-item
+          %h2.accordion-header{:id => "flush-headingOne-#{task_assignment.id}"}
+            %button.accordion-button.collapsed{"aria-controls" => "flush-collapseOne", "aria-expanded" => "false", "data-bs-target" => "#flush-collapseOne-#{task_assignment.id}", "data-bs-toggle" => "collapse", :type => "button"}
+              %span.ml-2.mr-4
+                = link_to patient_task_assignment_path(@patient, task_assignment, {task_assignment: {is_completed: !task_assignment.is_completed}}), method: :put, class: 'remote-link' do
+                  %i{:class => "fa fa-check grey #{task_assignment.is_completed ? 'completed' : 'pending'}"}
+              .modal-title.m-2.pl-2
+                = task_assignment.task_item.title
+                - if Date.today > task_assignment.due_date + task_assignment.task_item.due_days.to_i.days
+                  %i.fa.fa-exclamation-triangle
+                - else
+                  %span.badge.bg-success
+                    start date: #{task_assignment.due_date}
+
+          .accordion-collapse.collapse{"aria-labelledby" => "flush-headingOne-#{task_assignment.id}", "data-bs-parent" => "#accordionFlushExample-#{task_assignment.id}", :id => "flush-collapseOne-#{task_assignment.id}"}
+            .accordion-body
+              = task_assignment.task_item.body.html_safe

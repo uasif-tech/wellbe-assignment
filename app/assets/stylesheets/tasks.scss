@@ -1,0 +1,68 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+h4.dashboard-title {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 700;
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.dashboard-title a {
+  text-decoration: none;
+  color: #2b2b2b;
+}
+
+.dashboard-title a:hover {
+  color: #515da1;
+}
+
+.img-content-wrapper {
+  margin: 0 -200px 0 auto;
+}
+
+.task-link {
+  background-color: #e6e8eb;
+  padding: 15px 10px 15px 0;
+  display: inline-block;
+  margin-right: 20px;
+  color: #2b2b2b;
+  text-decoration: none;
+  font-weight: 600;
+  width: 700px;
+  margin-top: 20px;
+}
+
+.task-link a {
+  padding-left: 30px;
+  text-decoration: none;
+  color: #2c2c2c;
+}
+
+.task-link a:hover {
+  color: #515da1;
+
+}
+
+.task-link:hover {
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.27);
+  cursor: pointer;
+}
+
+#add-todo {
+  margin: 100px auto 0 auto;
+  width: 500px;
+}
+
+#todo .img-content-wrapper {
+  margin: 0 auto 0 auto;
+
+}
+
+.task-dashboard {
+  overflow: scroll;
+  margin-bottom: 80px;
+}

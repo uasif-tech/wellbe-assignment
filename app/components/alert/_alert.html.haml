@@ -1,0 +1,21 @@
+%div{ class: "callout #{type_classes} #{size_classes} #{properties[:class] } alert",
+    id: alert_id,
+    role: 'alert',
+    'aria-describedby': properties[:'aria-describedby'] || false,
+    data: { closeable: properties[:closeable], 'fade-out-duration': 0 },
+    tabindex: '0' }
+  .alert__body
+    .alert__icon
+      %i{ class: "icon-alert_#{properties[:type]}", 'aria-hidden' => 'true'}
+    .alert__content
+      - if properties[:title]
+        %p.alert__heading= properties[:title] unless properties[:title].nil?
+      - if properties[:body].present?
+        .alert__text= properties[:body].html_safe
+      - if (body = properties[:yield])
+        .alert__text= body
+      - if (actions =properties[:actions])
+        .alert__actions= actions
+  - unless properties[:closeable].nil?
+    %button.button.close-button.button--close{ 'type': 'button', 'data-close': true, 'aria-label': t('alert.close') }
+      = render_component('icon', mvp_type: 'hidden', mvp_name: 'general_close')

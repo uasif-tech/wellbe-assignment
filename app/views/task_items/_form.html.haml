@@ -1,0 +1,25 @@
+#todo
+  .container
+    .img-content-wrapper.task_item
+      %img.img-fluid.rounded{:alt => "", :src => "#{asset_path('img-holder.png')}"}/
+      %h4.dashboard-title
+        %a{:href => "#"} Add Task Item
+    %div{:id => "add-todo m-0"}
+      = form_with(model: task_item, url: [@task, @task_item]) do |form|
+        - if task_item.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(task_item.errors.count, "error")
+              prohibited this task_item from being saved:
+            %ul
+              - task_item.errors.each do |error|
+                %li= error.full_message
+        .form-group
+          = form.text_field :title,class: 'form-control', placeholder: 'Title'
+        .form-group.mt-3
+          = form.text_area :body, :class => "tinymce", :rows => 10, :cols => 50
+        .form-group.mt-3
+          = form.number_field :due_days, class: 'form-control', placeholder: 'Due Days'
+        #action-buttons.text-center.mt-4
+          = link_to 'CANCEL', task_task_items_path, class: 'btn  btn-edit btn-general'
+          = form.submit class: 'btn  btn-edit btn-general'

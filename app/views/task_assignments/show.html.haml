@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Patient:
+  = @task_assignment.patient.first_name
+%p
+  %strong Task:
+  = @task_assignment.task.task_name
+%p
+  %strong Task item:
+  = @task_assignment.task_item.title
+%p
+  %strong Due date:
+  = @task_assignment.due_date
+%p
+  %strong Is completed:
+  = @task_assignment.is_completed
+= link_to 'Edit', edit_patient_task_assignment_path(@task_assignment)
+|
+= link_to 'Back', patient_task_assignments_path

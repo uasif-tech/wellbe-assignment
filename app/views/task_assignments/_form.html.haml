@@ -1,0 +1,27 @@
+= form_with(model: task_assignment, url: [@patient, @task_assignment]) do |form|
+  - if @patient.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@patient.errors.count, "error")
+        prohibited this task_assignment from being saved:
+      %ul
+        - @patient.errors.each do |error|
+          %li= error.full_message
+  #todo
+    .container
+      .img-content-wrapper
+        %img.img-fluid.rounded{:alt => "", :src => "#{asset_path('img-holder.png')}"}/
+        %h4.dashboard-title
+          %a{:href => "#"} Create Patient Assignment
+      #add-todo
+        .form-group.mt-4
+          = form.select :task_id,  Task.all.collect {|p| [ p.task_name, p.id ] },{} ,class: 'form-control'
+        .form-group.row.mt-4
+          .col-12
+            = form.date_select :due_date, {},class: 'form-control'
+        .form-group.mt-4
+          = form.select(:task_item_ids, @all_tasks&.first&.task_items&.all&.collect {|p| [ p.title, p.id ] }, {}, |
+            { :multiple => true, :size => 5, allow_null: false, class: 'form-select'  })                         |
+        #action-buttons.text-center.mt-4
+          = link_to 'CANCEL', patients_path, class: 'btn  btn-edit btn-general'
+          = form.submit class: 'btn  btn-edit btn-general'

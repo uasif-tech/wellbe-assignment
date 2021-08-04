@@ -1,0 +1,24 @@
+%p#notice= notice
+#dashboard
+  .container
+    .row.mb-4
+      .col-md-10
+        %h2 Tasks
+      .col-md-2.text-right
+        = link_to 'Add Patient',new_patient_path, class: 'btn  btn-success text-white ml-1'
+
+    #todo-wrapper
+      - @patients.each do |patient|
+        .row.mb-1.data-row
+          .col-md-6.ml-1
+            = "#{patient.first_name} #{patient.last_name}"
+          .col-md-3.ml-1
+            = patient.created_at.strftime("%e %b, %Y")
+          .col-md-3.text-right
+            - if patient.task_assignments.any?
+              = link_to 'View', patient_task_assignments_path(patient), class: 'btn btn-primary'
+            - else
+              = link_to 'Assign', new_patient_task_assignment_path(patient), class: 'btn btn-primary'
+            = link_to 'Edit', edit_patient_path(patient), class: 'btn btn-primary btn-edit', role: :button
+            = link_to 'Destroy', patient, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-delete'
+

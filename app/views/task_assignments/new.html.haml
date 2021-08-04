@@ -1,0 +1,7 @@
+= render 'form', task_assignment: @task_assignment
+
+:javascript
+  let task_items = "#{@all_tasks.to_json(only: [:id, :task_name],include: {task_items: {only: [:id, :title]} })}".replace(/&quot;/g, '"');
+  task_items = JSON.parse(task_items)
+  console.log(task_items);
+
